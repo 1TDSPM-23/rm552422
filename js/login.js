@@ -110,7 +110,9 @@ botaoSubmit.addEventListener("click", ()=>{
         localStorage.setItem("user-validado", JSON.stringify(usuarioValidado));
 
         //Criando token de autenticação
-        const token = Math.random().
+        const token = Math.random().toString(16).substring(2)+Math.random().toString(16).substring(2);
+        //Adicionando o toke no localStorage
+        localStorage.setItem("user-token",token);
 
         //Redirect
         setTimeout(()=>{
