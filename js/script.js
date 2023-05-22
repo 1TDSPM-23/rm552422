@@ -33,7 +33,6 @@
    //DESCOBRINDO SE UM NÚMERO É PAR OU IMPAR
    //UTILIZANDO OPERADOR TERNÁRIO ( ? ).
 //Declarar uma variável com a palavra reservada var.
-
 // var nr1 = "10";
 // var nr2 = "5";
 // var resultado;
@@ -41,10 +40,6 @@
 // resultado = !(parseInt(nr1)%parseInt(nr2)) ? "PAR" : "IMPAR";
 // console.log(`O NÚMERO É : ${resultado}`);
 
-
-//DIFERENÇA ENTRE VAR/LET/CONST
-var nome1 = "Beatriz";
-let nome2 = "Matheus";
 
 //REGRAS DO CONST
 //1ª Regra = Inicializar na declaração
@@ -54,6 +49,7 @@ let nome2 = "Matheus";
 //DIFERENÇA ENTRE VAR/LET/CONST
 // var nome1 = "Beatriz";
 // let nome2 = "Matheus";
+
 // let nome = "Beatriz";
 
 // if(nome != ""){
@@ -63,43 +59,59 @@ let nome2 = "Matheus";
 // console.log(nome);
 
 //ARRAY e seu métodos
-let frutas = ["banana","maçã","morango","carambola","acerola","laranja"];
-//Imprimindo um array
-console.log(frutas);
-console.table(frutas);
-console.log(frutas[4]);
+// let frutas = ["banana","maçã","morango","carambola","acerola","laranja"];
+// //Imprimindo um array
+// console.log(frutas);
+// console.table(frutas);
+// console.log(frutas[4]);
 
-//Adicionar um item ao final do array com o método push(item);
-frutas.push("melão");
-console.log(frutas);
-//Adicionar um item no início do array com o método unshift(item);
-frutas.unshift("cajú");
-console.log(frutas);
-//Remover um item do final do array com o método unshift(item);
-frutas.unshift("cajú");
-console.log(frutas);
-//Remover um item do final do array com o método pop();
-frutas.pop();
-console.log(frutas);
-//Remover um item do início do array com o método shift();
-frutas.shift();
-console.log(frutas);
+// //Adicionar um iten ao final do array com o método push(iten);
+// frutas.push("melão");
+// console.log(frutas);
+// //Adicionar um iten no início do array com o método unshift(iten);
+// frutas.unshift("cajú");
+// console.log(frutas);
+// //Remover um iten do final do array com o método pop();
+// frutas.pop();
+// console.log(frutas);
+// //Remover um iten do início do array com o método shift();
+// frutas.shift();
+// console.log(frutas);
 
-//Para localizar um item dentro do array, utilizamos o método indexOf(itenNome);
-// let indice = frutas.indexOf("morango");
-//console.log(frutas[indice]);
+// //Para localizar um itém dentro do array, utilizamos o método indexOf(itenNome);
+// // let indice = frutas.indexOf("morango");
+// // console.log(frutas[indice]);
 
+// //Para localizar um itém dentro do array, e apagar ele apagar ele utilizamos o método splice(indice do item, quantidade de vezes que o indice será removido).
+// //Obs: utilize o método indexOf(itenNome) para obter o indice do iten;
+// let indice = frutas.indexOf("carambola");
+// console.log("FRUTA Q ESTAVA NO INDICE ANTES DA REMOÇÃO : " + frutas[indice]);
+// frutas.splice(indice,1);
+// console.log("FRUTA Q FICOU NO INDICE PÓS REMOÇÃO : " + frutas[indice]);
 
-//Para localizar um item dentro do array, e apagar ele, utilizamos o método splice(indice do item, quantidade de vezes que o indice será removido).
-//Obs: Utilize o método indexOf(utenNome) para obter o indice do item;
-let indice = frutas.indexOf("carambola");
-console.log("FRUTA Q ESTAVA NO INDICE ANTES DA REMOÇÃO : " + frutas[indice]);
-frutas.splice(indice,2);
-console.log("FRUTA Q FICOU NO INDICE PÓS REMOÇÃO : " + frutas[indice]);
-
-frutas.forEach( (fruta)=>(
-    console.log("olha ele : " + fruta)
-) );
+// frutas.forEach( (fruta)=>{
+//     console.log("olha ele : " + fruta);
+// } );
 
 
+//  const inputUser = document.getElementById("idNm");
+//  console.log(inputUser.value);
 
+
+if(localStorage.getItem("user-token")){
+   const divWelcome = document.querySelector("#welcome");
+   const usuarioValidado = JSON.parse(localStorage.getItem("user-validado"));
+
+   divWelcome.innerHTML = usuarioValidado.nomeCompleto;
+
+   const botaoSair = document.querySelector("#btnSair");
+   
+   botaoSair.addEventListener("click", ()=>{
+      localStorage.removeItem("user-token");
+      localStorage.removeItem("user-validado");
+      window.location.href = "../login.html";   
+   });
+
+}else{
+   window.location.href = "../login.html";
+}
